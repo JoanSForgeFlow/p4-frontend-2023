@@ -9,9 +9,9 @@ const PokemonList: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className="pokemon-grid">
       {pokemons.map((pokemon, index) => (
-        <div key={index}>
+        <div key={index} className="pokemon-card">
           <Link to={`/pokemon/${pokemon.name}`}>{pokemon.name}</Link>
         </div>
       ))}
