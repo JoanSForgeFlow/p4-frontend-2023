@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { getPokemons } from '../services/pokeApi';
+import { PokemonListData, PokemonData } from '../types';
 
 const usePokemons = () => {
-  const [pokemons, setPokemons] = useState([]);
+  const [pokemons, setPokemons] = useState<PokemonListData[]>([]);
 
   useEffect(() => {
     const fetchPokemons = async () => {
