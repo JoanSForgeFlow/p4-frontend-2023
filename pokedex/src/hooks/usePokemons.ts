@@ -8,6 +8,7 @@ const usePokemons = () => {
     const fetchPokemons = async () => {
       const data = await getPokemons();
       setPokemons(data);
+      console.log(data);
     };
 
     fetchPokemons();
