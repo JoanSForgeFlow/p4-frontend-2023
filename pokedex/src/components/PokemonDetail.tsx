@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import usePokemonDetail from '../hooks/usePokemonDetail';
 import { PokemonData } from '../types';
+import TypeTag from './TypeTag';
 
 const PokemonDetail: React.FC = () => {
   const params = useParams();
@@ -9,7 +10,7 @@ const PokemonDetail: React.FC = () => {
   const pokemon = usePokemonDetail(params.name);
 
   if (!('name' in pokemon)) {
-    return <div>Cargando...</div>;
+    return <div>Loading...</div>;
   }
 
   const detailedPokemon = pokemon as PokemonData;
@@ -41,7 +42,7 @@ const PokemonDetail: React.FC = () => {
       <p>Weight: {detailedPokemon.weight}</p>
       <div className="types">
         {detailedPokemon.types?.map((type) => (
-          <span key={type.type.name} className="type-tag">{type.type.name}</span>
+          <TypeTag key={type.type.name} type={type.type.name} />
         ))}
       </div>
       <table>
