@@ -117,8 +117,7 @@ body {
 .type-tag {
   padding: 5px 10px;
   border-radius: 5px;
-  background-color: #3c5aa6;
-  color: #ffffff;
+  font-weight: bold;
 }
 
 table {
@@ -133,11 +132,6 @@ th, td {
   text-align: left;
   border: 1px solid #ddd;
   padding: 8px;
-}
-
-th {
-  color: #ae2e2e;
-  background-color: #f2f2f2;
 }
 
 .stat-bar-container {
@@ -166,7 +160,7 @@ th {
 .attributes-container {
   display: flex;
   justify-content: space-around;
-  width: 100%;
+  width: 30%;
   margin: 20px 0;
 }
 

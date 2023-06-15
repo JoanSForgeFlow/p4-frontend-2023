@@ -18,7 +18,7 @@ const PokemonDetail: React.FC = () => {
   const getStatBar = (value: number) => {
     let color;
     if (value < 55) {
-      color = 'red';
+      color = '#808080';
     } else if (value < 90) {
       color = 'yellow';
     } else {

@@ -30,7 +30,7 @@ const TypeTag: React.FC<TypeTagProps> = ({ type }) => (
     className="type-tag"
     style={{backgroundColor: typeColors[type] || 'grey', color: '#fff'}}
   >
-    {type}
+    {type.toUpperCase()}
   </span>
 );
 
