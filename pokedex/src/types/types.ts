@@ -2,16 +2,6 @@ export type PokemonData = {
   name: string;
   height: number;
   weight: number;
-  abilities: {
-    ability: {
-      name: string;
-    };
-  }[];
-  moves: {
-    move: {
-      name: string;
-    };
-  }[];
   types: {
     type: {
       name: string;
