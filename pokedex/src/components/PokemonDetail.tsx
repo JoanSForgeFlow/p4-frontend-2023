@@ -12,6 +12,25 @@ const PokemonDetail: React.FC = () => {
   }
 
   const detailedPokemon = pokemon as PokemonData;
+
+  const getStatBar = (value: number) => {
+    let color;
+    if (value < 55) {
+      color = 'red';
+    } else if (value < 90) {
+      color = 'yellow';
+    } else {
+      color = 'green';
+    }
+
+    const percentage = (value / 255) * 100;
+    return (
+      <div className="stat-bar">
+        <div className="stat-value" style={{width: `${percentage}%`, backgroundColor: color}}></div>
+      </div>
+    );
+  };
+
   return (
     <div className="detail-container">
       <h1>{detailedPokemon.name}</h1>
@@ -25,10 +44,19 @@ const PokemonDetail: React.FC = () => {
           <span key={type.type.name} className="type-tag">{type.type.name}</span>
         ))}
       </div>
-      <p>Stats: {detailedPokemon.stats?.map((stat) => `${stat.stat.name}: ${stat.base_stat}`).join(', ')}</p>
+      <table>
+        <tbody>
+          {detailedPokemon.stats?.map((stat) => (
+            <tr key={stat.stat.name}>
+              <td>{(stat.stat.name === 'hp') ? 'HP': stat.stat.name.charAt(0).toUpperCase() + stat.stat.name.slice(1)}</td>
+              <td>{stat.base_stat}</td>
+              <td>{getStatBar(stat.base_stat)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
-
 
 export default PokemonDetail;
