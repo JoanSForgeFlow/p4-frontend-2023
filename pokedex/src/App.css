@@ -41,6 +41,16 @@
   color: #888;
 }
 
+.search-input {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 20px 0;
+  box-sizing: border-box;
+  font-size: 18px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
 .pokemon-grid {
   width: 100%;
   display: grid;
