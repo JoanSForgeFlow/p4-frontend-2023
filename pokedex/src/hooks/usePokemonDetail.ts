@@ -8,6 +8,10 @@ const usePokemonDetail = (name: string) => {
   useEffect(() => {
     const fetchPokemon = async () => {
       const data = await getPokemon(name);
+
+      if (data.height) data.height = data.height / 10;
+      if (data.weight) data.weight = data.weight / 10;
+
       setPokemon(data);
     };
 
@@ -18,4 +22,5 @@ const usePokemonDetail = (name: string) => {
 };
 
 export default usePokemonDetail;
+
 

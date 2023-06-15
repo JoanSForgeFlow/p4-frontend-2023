@@ -38,8 +38,16 @@ const PokemonDetail: React.FC = () => {
       <button onClick={() => navigate(-1)}>Back to Menu</button>
       <h1>{detailedPokemon.name}</h1>
       <img src={detailedPokemon.sprites?.other?.['official-artwork']?.front_default} alt={detailedPokemon.name} />
-      <p>Height: {detailedPokemon.height}</p>
-      <p>Weight: {detailedPokemon.weight}</p>
+      <div className="attributes-container">
+        <div className="attribute">
+          <span role="img" aria-label="Ruler emoji">📏</span>
+          <p>Height: {detailedPokemon.height}m</p>
+        </div>
+        <div className="attribute">
+          <span role="img" aria-label="Weight scale emoji">⚖️</span>
+          <p>Weight: {detailedPokemon.weight}kg</p>
+        </div>
+      </div>
       <div className="types">
         {detailedPokemon.types?.map((type) => (
           <TypeTag key={type.type.name} type={type.type.name} />
