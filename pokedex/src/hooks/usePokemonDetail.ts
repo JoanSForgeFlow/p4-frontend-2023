@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getPokemon } from '../services/pokeApi';
-import { PokemonData } from '../types';
+import { PokemonData } from '../types/types';
 
 const usePokemonDetail = (name: string) => {
   const [pokemon, setPokemon] = useState<PokemonData | {}>({});

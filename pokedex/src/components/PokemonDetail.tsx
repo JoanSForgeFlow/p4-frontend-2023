@@ -1,13 +1,14 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import usePokemonDetail from '../hooks/usePokemonDetail';
-import { PokemonData } from '../types';
+import { PokemonData } from '../types/types';
 import TypeTag from './TypeTag';
 
 const PokemonDetail: React.FC = () => {
   const params = useParams();
   const navigate = useNavigate();
-  const pokemon = usePokemonDetail(params.name);
+  const pokemonName = params.name || 'default';
+  const pokemon = usePokemonDetail(pokemonName);
 
   if (!('name' in pokemon)) {
     return <div>Loading...</div>;
@@ -49,13 +50,13 @@ const PokemonDetail: React.FC = () => {
         </div>
       </div>
       <div className="types">
-        {detailedPokemon.types?.map((type) => (
+        {detailedPokemon.types?.map((type: {type: {name: string}}) => (
           <TypeTag key={type.type.name} type={type.type.name} />
         ))}
       </div>
       <table>
         <tbody>
-          {detailedPokemon.stats?.map((stat) => (
+          {detailedPokemon.stats?.map((stat: {stat: {name: string}, base_stat: number}) => (
             <tr key={stat.stat.name}>
               <td>{(stat.stat.name === 'hp') ? 'HP': stat.stat.name.charAt(0).toUpperCase() + stat.stat.name.slice(1)}</td>
               <td>{stat.base_stat}</td>
