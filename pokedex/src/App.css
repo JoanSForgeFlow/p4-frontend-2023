@@ -33,6 +33,14 @@
   }
 }
 
+.pokedex-header {
+  text-align: center;
+  background-color: #3c5aa6;
+  color: #fff;
+  padding: 20px 0;
+  margin-bottom: 20px;
+}
+
 .card {
   padding: 2em;
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import usePokemons from '../hooks/usePokemons';
+import { Helmet } from 'react-helmet';
 
 const PokemonList: React.FC = () => {
   const pokemons = usePokemons();
@@ -16,6 +17,10 @@ const PokemonList: React.FC = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Pokedex</title>
+      </Helmet>
+      <h1 className="pokedex-header">Pokedex</h1>
       <input
         type="text"
         className="search-input"
