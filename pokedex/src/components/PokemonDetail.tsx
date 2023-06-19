@@ -1,8 +1,11 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import usePokemonDetail from '../hooks/usePokemonDetail';
-import { PokemonData, TypeColors } from '../types/types';
-import TypeTag from './TypeTag';
+import { PokemonData } from '../types/types';
+import PokemonHeader from './PokemonHeader';
+import PokemonAttributes from './PokemonAttributes';
+import PokemonTypes from './PokemonTypes';
+import PokemonStats from './PokemonStats';
 
 const PokemonDetail: React.FC = () => {
   const params = useParams();
@@ -37,34 +40,16 @@ const PokemonDetail: React.FC = () => {
   return (
     <div className="detail-container">
       <button onClick={() => navigate(-1)}>Back to Menu</button>
-      <h1>{detailedPokemon.name}</h1>
-      <img src={detailedPokemon.sprites?.other?.['official-artwork']?.front_default} alt={detailedPokemon.name} />
-      <div className="attributes-container">
-        <div className="attribute">
-          <span role="img" aria-label="Ruler emoji">📏</span>
-          <p>Height: {detailedPokemon.height}m</p>
-        </div>
-        <div className="attribute">
-          <span role="img" aria-label="Weight scale emoji">⚖️</span>
-          <p>Weight: {detailedPokemon.weight}kg</p>
-        </div>
-      </div>
-      <div className="types">
-        {detailedPokemon.types?.map((type: {type: {name: string}}) => (
-          <TypeTag key={type.type.name} type={type.type.name as keyof TypeColors} />
-        ))}
-      </div>
-      <table>
-        <tbody>
-          {detailedPokemon.stats?.map((stat: {stat: {name: string}, base_stat: number}) => (
-            <tr key={stat.stat.name}>
-              <td>{(stat.stat.name === 'hp') ? 'HP': stat.stat.name.charAt(0).toUpperCase() + stat.stat.name.slice(1)}</td>
-              <td>{stat.base_stat}</td>
-              <td>{getStatBar(stat.base_stat)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <PokemonHeader 
+        name={detailedPokemon.name} 
+        image={detailedPokemon.sprites?.other?.['official-artwork']?.front_default || ''} 
+      />
+      <PokemonAttributes 
+        height={detailedPokemon.height} 
+        weight={detailedPokemon.weight} 
+      />
+      <PokemonTypes types={detailedPokemon.types} />
+      <PokemonStats stats={detailedPokemon.stats} getStatBar={getStatBar} />
       <button onClick={() => navigate(-1)}>Back to Menu</button>
     </div>
   );
