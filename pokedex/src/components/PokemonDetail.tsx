@@ -6,6 +6,7 @@ import PokemonHeader from './PokemonHeader';
 import PokemonAttributes from './PokemonAttributes';
 import PokemonTypes from './PokemonTypes';
 import PokemonStats from './PokemonStats';
+import { ClipLoader } from 'react-spinners';
 
 const PokemonDetail: React.FC = () => {
   const params = useParams();
@@ -14,7 +15,11 @@ const PokemonDetail: React.FC = () => {
   const pokemon = usePokemonDetail(pokemonName);
 
   if (!('name' in pokemon)) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <ClipLoader color="#000000" size={150} />
+      </div>
+    );
   }
 
   const detailedPokemon = pokemon as PokemonData;

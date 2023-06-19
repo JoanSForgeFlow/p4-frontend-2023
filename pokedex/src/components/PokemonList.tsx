@@ -2,13 +2,18 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import usePokemons from '../hooks/usePokemons';
 import { Helmet } from 'react-helmet';
+import { ClipLoader } from 'react-spinners';
 
 const PokemonList: React.FC = () => {
   const pokemons = usePokemons();
   const [searchValue, setSearchValue] = useState('');
 
   if (!pokemons) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <ClipLoader color="#000000" size={150} />
+      </div>
+    );
   }
 
   const filteredPokemons = pokemons.filter((pokemon) =>
