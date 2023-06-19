@@ -1,6 +1,7 @@
 import React from 'react';
+import { TypeColors as TypeColorsType } from '../types/types';
 
-const typeColors = {
+const typeColors: TypeColorsType = {
   normal: '#A8A878',
   fighting: '#C03028',
   flying: '#A890F0',
@@ -22,7 +23,7 @@ const typeColors = {
 };
 
 type TypeTagProps = {
-  type: string;
+  type: keyof TypeColorsType;
 };
 
 const TypeTag: React.FC<TypeTagProps> = ({ type }) => (

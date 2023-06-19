@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import usePokemonDetail from '../hooks/usePokemonDetail';
-import { PokemonData } from '../types/types';
+import { PokemonData, TypeColors } from '../types/types';
 import TypeTag from './TypeTag';
 
 const PokemonDetail: React.FC = () => {
@@ -51,7 +51,7 @@ const PokemonDetail: React.FC = () => {
       </div>
       <div className="types">
         {detailedPokemon.types?.map((type: {type: {name: string}}) => (
-          <TypeTag key={type.type.name} type={type.type.name} />
+          <TypeTag key={type.type.name} type={type.type.name as keyof TypeColors} />
         ))}
       </div>
       <table>
